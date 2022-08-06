@@ -69,7 +69,14 @@ object WallService {
     }
 
     fun update(post: Post): Boolean {
-        if (post.id != id) {
+        for (savedPostIndex in posts.indices){
+            val savedPost = posts[savedPostIndex]
+        if (savedPostIndex == post.id) {
+            posts[savedPostIndex] = post.copy(
+                fromId = savedPost.fromId,
+                date = savedPost.date
+            )
+        }
                 return true
             }
         return false
