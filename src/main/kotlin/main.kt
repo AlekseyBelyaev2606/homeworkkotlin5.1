@@ -1,28 +1,29 @@
+
 import java.util.*
 
 data class Post(
-    val id: Int,
-    val ownerId: Int,
-    val fromId: Int,
-    val createdBy: String,
-    val date: Long,
-    val text: String,
-    val replyPostId: Int,
-    val friendsOnly: Boolean,
-    val comments: Comments,
-    val copyright: Copyright,
-    val likes: Likes,
-    val repost: Repost,
-    val views: Views,
-    val postType: String,
-    val signerId: Boolean,
-    val canPin: Boolean,
-    val canDelete: Boolean,
-    val canEdit: Boolean,
-    val isPinned: Boolean,
-    val markedAsAds: Boolean,
-    val isFavorite: Boolean,
-    val postponedId: Boolean,
+    val id: Int = 0,
+    val ownerId: Int = 0,
+    val fromId: Int = 0,
+    val createdBy: String = "",
+    val date: Long = 0,
+    val text: String = "",
+    val replyPostId: Int = 0,
+    val friendsOnly: Boolean = false,
+    val comments: Comments = Comments(),
+    val copyright: Copyright = Copyright(),
+    val likes: Likes = Likes(),
+    val repost: Repost = Repost(),
+    val views: Views = Views(),
+    val postType: String = "",
+    val signerId: Boolean = false,
+    val canPin: Boolean = false,
+    val canDelete: Boolean = false,
+    val canEdit: Boolean = false,
+    val isPinned: Boolean = false,
+    val markedAsAds: Boolean = false,
+    val isFavorite: Boolean = false,
+    val postponedId: Boolean = false,
 ){
     data class Views(
         val count: Int = 0
@@ -42,9 +43,9 @@ data class Post(
 
     data class Copyright(
         val id: Int = 0,
-        val link: String,
-        val name: String,
-        val type: String
+        val link: String = "",
+        val name: String = "",
+        val type: String = ""
     )
 
     data class Likes(
@@ -53,10 +54,6 @@ data class Post(
         val canLike: Boolean = false,
         val canPublish: Boolean = false,
     )
-
-}
-
-fun main() {
 }
 
 object WallService {
@@ -80,5 +77,9 @@ object WallService {
                 return true
             }
         return false
+    }
+
+    fun main() {
+
     }
 }
