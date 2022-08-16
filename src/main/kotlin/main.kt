@@ -1,6 +1,4 @@
 
-import java.util.*
-
 data class Post(
     val id: Int = 0,
     val ownerId: Int = 0,
@@ -79,7 +77,4 @@ object WallService {
         return false
     }
 
-    fun main() {
-
-    }
 }

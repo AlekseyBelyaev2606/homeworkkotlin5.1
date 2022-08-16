@@ -1,23 +1,25 @@
 import org.junit.Test
 import org.junit.Assert.*
 
-class Upgrade {
+class WallServiceTest {
 
     @Test
     fun updateExistPostShouldReturnsTrue() {
-        val initialPost = Post(text = "initial post")
-        val updatedPost = Post(id = 1, text = "updated post")
+        val service = WallService
+        service.add(Post(text = "initial post"))
+        service.add(Post(id = 1, text = "updated post"))
+        val update = Post(id = 1, text = "next update")
 
-        WallService.add(initialPost)
-        val result = WallService.update(updatedPost)
+        val result = service.update(update)
 
         assertTrue(result)
-            }
+    }
 
 
     @Test
     fun updateAbsentPostShouldReturnsFalse() {
         val updatedPost = Post(id = 1, text = "updated post")
+
         val result = WallService.update(updatedPost)
 
         assertFalse(result)
