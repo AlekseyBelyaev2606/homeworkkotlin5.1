@@ -5,11 +5,11 @@ class WallServiceTest {
 
     @Test
     fun updateExistPostShouldReturnsTrue() {
-        val service = WallService
+        val service = WallService()
         service.add(Post(text = "initial post"))
         service.add(Post(id = 1, text = "updated post"))
-        val update = Post(id = 1, text = "next update")
 
+        val update = Post(1, text = "next update")
         val result = service.update(update)
 
         assertTrue(result)
@@ -18,22 +18,25 @@ class WallServiceTest {
 
     @Test
     fun updateAbsentPostShouldReturnsFalse() {
+        val service = WallService()
         val updatedPost = Post(id = 1, text = "updated post")
 
-        val result = WallService.update(updatedPost)
+        val result = service.update(updatedPost)
 
         assertFalse(result)
     }
 
     @Test
     fun addPostShouldIncrementId() {
+        val service = WallService()
         val initialPost = Post(text = "initial post")
-        WallService.add(initialPost)
-        val updatedPost = Post(id = 1, text = "updated post")
-        WallService.add(updatedPost)
-        val result = WallService.update(updatedPost)
-        assertTrue(result)
+        val updatePost = Post(id = 1, text = "updated post")
+        val expectedId = 2
 
-        assertEquals(initialPost.id + 1, updatedPost.id)
+        service.add(initialPost)
+        val result = service.add(updatePost)
+
+        assertEquals(expectedId, result.id)
+
     }
 }

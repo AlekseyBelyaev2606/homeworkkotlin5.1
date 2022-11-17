@@ -54,7 +54,7 @@ data class Post(
     )
 }
 
-object WallService {
+class WallService {
     private var posts = emptyArray<Post>()
     private var id = 0
 
